@@ -1,2 +1,11 @@
-# Presentation
-Template for generating a `Reveal.js` presentation from a Jupyter notebook (using `nbconvert`) and serving it using GitHub Pages. The presentation can then be viewed [here](https://cicwi.github.io/PresentationJupyterNB/Presentation.html).
+# Inleiding Scientific Computing deel 2 - Computed Tomography
+
+## Week 1
+
+* [Wat is computed tomography?](https://tristanvanleeuwen.github.io/InleidingSC2-CT/Presentation.html)
+
+Opdrachten:
+
+## Week 2
+
+## Week 3
