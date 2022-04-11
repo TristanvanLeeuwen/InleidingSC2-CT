@@ -2,7 +2,7 @@
 
 ## Week 1
 
-* [Wat is computed tomography?](https://tristanvanleeuwen.github.io/InleidingSC2-CT/Presentation.html)
+* [Wat is computed tomography?](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lectures/lecture1.html)
 
 Opdrachten:
 
