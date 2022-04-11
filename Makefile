@@ -4,5 +4,5 @@ html: lectures/lecture1.ipynb
 	cp -r lectures/figures ./html
 website: html
 	ghp-import -n -p -f html
-	open https://tristanvanleeuwen.github.io/InleidingSC2-CT/lectures/lecture1.html
+	open https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture1.html
 	
