@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>README</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="inleiding-scientific-computing-deel-2---computed-tomography">Inleiding Scientific Computing deel 2 - Computed Tomography</h1>
+<p>In deel 2 van <em>Inleiding Scientific Computing</em> gaan we aan de slag met Computed Tomography; een beeldvormingsmethode die wordt gebruikt in bijvoorbeeld een CT scanner. Het vergt veel rekenwerk om alle data uit een CT scanner te verwerken tot een t drie-dimensionaal beeld, en zoals je kunt voorstellen is het belangrijk om binnen korte tijd een resultaat te hebben.</p>
+<p>We leren over:</p>
+<ul>
+<li>De fysica achter Röntgentomography</li>
+<li>De Radontransformatie en de Fourier Slice Theorem</li>
+<li>De (discrete) Fourier transformatie en de niet-uniforme Fourier transformatie</li>
+<li>Het discretiseren van de Radon transformatie</li>
+<li>Verschillende beeldreconstructiemethoden, waaronder Filtered Backprojection en algebraische reconstructie.</li>
+</ul>
+<p>Daarnaast besteden we aandacht aan het schrijven van leesbare en foutloze code, versiebeheer, het vergelijken van verschillende numerieke methoden en reproduceerbare numerieke experimenten.</p>
+<p>De opdrachten je iedere week maakt verwerk je in tweetallen tot een verslag in de vorm van een wetenschappelijk artikel van maximaal 10 pagina’s. Gebruik hiervoor <a href="https://www.overleaf.com/latex/templates/preparing-a-manuscript-for-submission-to-an-optica-meeting-or-conference/ryxhcjvjfrjk">dit template</a> (beschikbaar via overleaf). Naast het verslag lever je ook de code in.</p>
+<h2 id="week-1">Week 1</h2>
+<h3 id="colleges">Colleges:</h3>
+<p>In deze lezingen leren we basis van Computed Tomography; de onderliggende fysica en de Fourier Slice Theorem, wat de basis vormt voor tomografische beeldreconstructie.</p>
+<ul>
+<li><a href="https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture1.html">Wat is computed tomography?</a></li>
+<li><a href="https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture2.html">Fourier reconstructie</a></li>
+</ul>
+<h3 id="opdrachten">Opdrachten:</h3>
+<p>In deze opdrachten onderzoeken jullie de nauwkeurigheid van de Python methode <code>radon</code> en vergelijken jullie verschillende Fourier reconstructiemethoden op nauwkeurigheid en efficientie.</p>
+<h2 id="week-2">Week 2</h2>
+<h3 id="colleges-1">Colleges:</h3>
+<p>Deze week gaan we de Radon transformatie discretiseren en verschillende aanpakken vergelijken in efficientie en nauwkeurigheid. Daarnaast kijken we naar een alternatieve reconstructiemethode; Filtered Backprojection (FBP).</p>
+<ul>
+<li><a href="https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture3.html">Discretisatie van de Radon transformatie</a></li>
+<li><a href="https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture4.html">Filtered backprojection</a></li>
+</ul>
+<h3 id="opdrachten-1">Opdrachten:</h3>
+<p>In de opdrachten deze week onderzoeken jullie welke discretisatie van de Radontransformatie het meest efficient is en hoe het FBP-algoritme efficient te implementeren.</p>
+<h2 id="week-3">Week 3</h2>
+<h3 id="colleges-2">Colleges:</h3>
+<p>Deze week kijken we naar nog een klasse van reconstructiemethoden; de algebraische methoden. Ook komen praktische zaken aan bod en gaan we aan de slag met een echte dataset.</p>
+<ul>
+<li><a href="https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture5.html">Algebraische reconstructiemethoden</a></li>
+<li><a href="https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture6.html">Tomografie in de praktijk</a></li>
+</ul>
+<h3 id="opdrachten-2">Opdrachten:</h3>
+<p>In de opdrachten vergelijken we verschillende algebraische reconstructiemethoden en ontwerpen een efficient en robuust algoritme. Daarnaast passen we deze toe op een echte dataset.</p>
+</body>
+</html>
