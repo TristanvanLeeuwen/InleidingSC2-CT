@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html  dir="ltr">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Inleiding Scientific Computing deel 2 - Computed Tomography</title>
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon.png">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.26.4/css/uikit.gradient.css">
+
+        <!-- <link rel="stylesheet" href="style.css"> -->
+        <link rel="stylesheet" href="https://cdn.rawgit.com/diversen/pandoc-uikit/master/style.css">
+        <link href="https://vjs.zencdn.net/5.4.4/video-js.css" rel="stylesheet" />
+        <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+        <!-- <script src="uikit.js"></script> -->
+        <script src="https://cdn.rawgit.com/diversen/pandoc-uikit/master/uikit.js"></script>
+        <!-- <script src="scripts.js"></script> -->
+        <script src="https://cdn.rawgit.com/diversen/pandoc-uikit/master/scripts.js"></script>
+        <!-- <script src="jquery.sticky-kit.js "></script> -->
+        <script src="https://cdn.rawgit.com/diversen/pandoc-uikit/master/jquery.sticky-kit.js"></script>
+
+        <meta name="generator" content="pandoc-uikit" />
+                        <title>Inleiding Scientific Computing deel 2 - Computed Tomography</title>
+        <style type="text/css">code{white-space: pre;}</style>
+                                                       
+    </head>
+
+    <body>
+
+
+        <div class="uk-container uk-container-center uk-margin-top uk-margin-large-bottom">
+
+                        <div class="uk-grid" data-uk-grid-margin>
+                <div class="uk-width-1-1">
+                    <h1 class="uk-heading-large">Inleiding Scientific Computing deel 2 - Computed Tomography</h1>
+                                                        </div>
+            </div>
+            
+            <div class="uk-grid" data-uk-grid-margin >          
+                <div class="uk-width-medium-1-4">
+                    <div class="uk-overflow-container" data-uk-sticky="{top:25,media: 768}">
+                        <div class="uk-panel uk-panel-box menu-begin" >
+
+                                                        <ul>
+                                                        <li><a href="#overzicht">Overzicht</a></li>
+                                                        <li><a href="#week-1">Week 1</a>
+                                                        <ul>
+                                                        <li><a href="#colleges">Colleges:</a></li>
+                                                        <li><a href="#opdrachten">Opdrachten:</a></li>
+                                                        </ul></li>
+                                                        <li><a href="#week-2">Week 2</a>
+                                                        <ul>
+                                                        <li><a href="#colleges-1">Colleges:</a></li>
+                                                        <li><a href="#opdrachten-1">Opdrachten:</a></li>
+                                                        </ul></li>
+                                                        <li><a href="#week-3">Week 3</a>
+                                                        <ul>
+                                                        <li><a href="#colleges-2">Colleges:</a></li>
+                                                        <li><a href="#opdrachten-2">Opdrachten:</a></li>
+                                                        </ul></li>
+                                                        </ul>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="uk-width-medium-3-4">
+<h1 id="overzicht">Overzicht</h1>
+<p>In deel 2 van <em>Inleiding Scientific Computing</em> gaan we aan de slag met Computed Tomography; een beeldvormingsmethode die wordt gebruikt in bijvoorbeeld een CT scanner. Het vergt veel rekenwerk om alle data uit een CT scanner te verwerken tot een t drie-dimensionaal beeld, en zoals je kunt voorstellen is het belangrijk om binnen korte tijd een resultaat te hebben.</p>
+<p>We leren over:</p>
+<ul>
+<li>De fysica achter Röntgentomography</li>
+<li>De Radontransformatie en de Fourier Slice Theorem</li>
+<li>De (discrete) Fourier transformatie en de niet-uniforme Fourier transformatie</li>
+<li>Het discretiseren van de Radon transformatie</li>
+<li>Verschillende beeldreconstructiemethoden, waaronder Filtered Backprojection en algebraische reconstructie.</li>
+</ul>
+<p>Daarnaast besteden we aandacht aan het schrijven van leesbare en foutloze code, versiebeheer, het vergelijken van verschillende numerieke methoden en reproduceerbare numerieke experimenten.</p>
+<p>De opdrachten je iedere week maakt verwerk je in tweetallen tot een verslag in de vorm van een wetenschappelijk artikel van maximaal 10 pagina’s. Gebruik hiervoor <a href="https://www.overleaf.com/latex/templates/preparing-a-manuscript-for-submission-to-an-optica-meeting-or-conference/ryxhcjvjfrjk">dit template</a> (beschikbaar via overleaf). Naast het verslag lever je ook de code in.</p>
+<h1 id="week-1">Week 1</h1>
+<h2 id="colleges">Colleges:</h2>
+<p>In deze lezingen leren we basis van Computed Tomography; de onderliggende fysica en de Fourier Slice Theorem, wat de basis vormt voor tomografische beeldreconstructie.</p>
+<ul>
+<li><a href="https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture1.html">Wat is computed tomography?</a></li>
+<li><a href="https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture2.html">Fourier reconstructie</a></li>
+</ul>
+<h2 id="opdrachten">Opdrachten:</h2>
+<p>In deze opdrachten onderzoeken jullie de nauwkeurigheid van de Python methode <code>radon</code> en vergelijken jullie verschillende Fourier reconstructiemethoden op nauwkeurigheid en efficientie.</p>
+<h1 id="week-2">Week 2</h1>
+<h2 id="colleges-1">Colleges:</h2>
+<p>Deze week gaan we de Radon transformatie discretiseren en verschillende aanpakken vergelijken in efficientie en nauwkeurigheid. Daarnaast kijken we naar een alternatieve reconstructiemethode; Filtered Backprojection (FBP).</p>
+<ul>
+<li><a href="https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture3.html">Discretisatie van de Radon transformatie</a></li>
+<li><a href="https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture4.html">Filtered backprojection</a></li>
+</ul>
+<h2 id="opdrachten-1">Opdrachten:</h2>
+<p>In de opdrachten deze week onderzoeken jullie welke discretisatie van de Radontransformatie het meest efficient is en hoe het FBP-algoritme efficient te implementeren.</p>
+<h1 id="week-3">Week 3</h1>
+<h2 id="colleges-2">Colleges:</h2>
+<p>Deze week kijken we naar nog een klasse van reconstructiemethoden; de algebraische methoden. Ook komen praktische zaken aan bod en gaan we aan de slag met een echte dataset.</p>
+<ul>
+<li><a href="https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture5.html">Algebraische reconstructiemethoden</a></li>
+<li><a href="https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture6.html">Tomografie in de praktijk</a></li>
+</ul>
+<h2 id="opdrachten-2">Opdrachten:</h2>
+<p>In de opdrachten vergelijken we verschillende algebraische reconstructiemethoden en ontwerpen een efficient en robuust algoritme. Daarnaast passen we deze toe op een echte dataset.</p>                    
+                </div>
+            </div>
+
+            <script src="https://vjs.zencdn.net/5.4.4/video.js"></script>
+        </div>
+    </body>
+</html>
