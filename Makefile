@@ -1,5 +1,4 @@
-html: README.md lectures/lecture1.ipynb lectures/lecture2.ipynb lectures/lecture3.ipynb lectures/lecture4.ipynb lectures/lecture5.ipynb lectures/lecture6.ipynb
-
+html: index lecture1 lecture2 lecture3 lecture4 lecture5 lecture6
 	cp lectures/lecture1.slides.html html/lecture1.html
 	cp lectures/lecture2.slides.html html/lecture2.html
 	cp lectures/lecture3.slides.html html/lecture3.html
@@ -9,25 +8,25 @@ html: README.md lectures/lecture1.ipynb lectures/lecture2.ipynb lectures/lecture
 
 	cp -r lectures/figures ./html
 
-lectures/lecture1.ipynb: 
+lecture1: lectures/lecture1.ipynb
 	jupyter nbconvert --to slides lectures/lecture1.ipynb --template=cwi
 
-lectures/lecture2.ipynb: 
+lecture2: lectures/lecture2.ipynb
 	jupyter nbconvert --to slides lectures/lecture2.ipynb --template=cwi
 
-lectures/lecture3.ipynb: 
+lecture3: lectures/lecture3.ipynb
 	jupyter nbconvert --to slides lectures/lecture3.ipynb --template=cwi
 
-lectures/lecture4.ipynb: 
+lecture4: lectures/lecture4.ipynb 
 	jupyter nbconvert --to slides lectures/lecture4.ipynb --template=cwi
 
-lectures/lecture5.ipynb: 
+lecture5: lectures/lecture5.ipynb
 	jupyter nbconvert --to slides lectures/lecture5.ipynb --template=cwi
 
-lectures/lecture6.ipynb: 
+lecture6: lectures/lecture6.ipynb
 	jupyter nbconvert --to slides lectures/lecture6.ipynb --template=cwi
 
-README.md: 
+index: README.md
 	pandoc --standalone README.md --template=html/uikit.html -o html/index.html --toc --metadata title="Inleiding Scientific Computing deel 2 - Computed Tomography"
 
 website: html

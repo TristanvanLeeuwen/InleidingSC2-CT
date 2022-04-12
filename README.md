@@ -12,7 +12,9 @@ We leren over:
 
 Daarnaast besteden we aandacht aan het schrijven van leesbare en foutloze code, versiebeheer, het vergelijken van verschillende numerieke methoden en reproduceerbare numerieke experimenten.
 
-De opdrachten je iedere week maakt verwerk je in tweetallen tot een verslag in de vorm van een wetenschappelijk artikel van maximaal 10 pagina's. Gebruik hiervoor [dit template](https://www.overleaf.com/latex/templates/preparing-a-manuscript-for-submission-to-an-optica-meeting-or-conference/ryxhcjvjfrjk) (beschikbaar via overleaf). Naast het verslag lever je ook de code in.
+De opdrachten je iedere week maakt verwerk je in tweetallen tot een verslag in de vorm van een wetenschappelijk artikel van **maximaal 10 pagina's** (inclusief referenties). Gebruik hiervoor [dit template](https://www.overleaf.com/latex/templates/preparing-a-manuscript-for-submission-to-an-optica-meeting-or-conference/ryxhcjvjfrjk) (beschikbaar via overleaf). Naast het verslag lever je ook de code in.
+
+De **deadline** voor het verslag is **vrijdag 24 juni 2022**. Mail je verslag naar [Tristan van Leeuwen](mailto:t.vanleeuwen@uu.nl)
 
 # Week 1
 
