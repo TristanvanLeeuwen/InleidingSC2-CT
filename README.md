@@ -9,7 +9,7 @@ The lecture notes cover the basics of Computed Tomography:
 * Image reconstruction using Filtered Back Projection and Algebraic reconstruction methods
 * Practical aspects
 
-The lecture notes are available under a .. license.
+The lecture notes are available under a CC-BY license.
 
 # Overzicht
 
