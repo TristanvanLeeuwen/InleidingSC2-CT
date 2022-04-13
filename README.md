@@ -1,3 +1,16 @@
+# Lecture notes on Computed Tomography
+
+The lecture notes cover the basics of Computed Tomography:
+
+* Lambert-Beer law and the Radon Transform
+* The Fourier-Slice Theorem
+* Fourier reconstruction
+* Discretisation of the Radon transform
+* Image reconstruction using Filtered Back Projection and Algebraic reconstruction methods
+* Practical aspects
+
+The lecture notes are available under a .. license.
+
 # Overzicht
 
 In deel 2 van *Inleiding Scientific Computing* gaan we aan de slag met Computed Tomography; een beeldvormingsmethode die wordt gebruikt in bijvoorbeeld een CT scanner. Het vergt veel rekenwerk om alle data uit een CT scanner te verwerken tot een t drie-dimensionaal beeld, en zoals je kunt voorstellen is het belangrijk om binnen korte tijd een resultaat te hebben.
