@@ -9,8 +9,6 @@ These lectures cover the basics of Computed Tomography:
 * [Lecture 5](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture5.html#/) Algebraic reconstruction methods
 * [Lecture 6](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture6.html#/) Practical aspects
 
-Shield: [![CC BY 4.0][cc-by-shield]][cc-by]
-
 This work is licensed under a
 [Creative Commons Attribution 4.0 International License][cc-by].
 
