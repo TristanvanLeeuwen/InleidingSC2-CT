@@ -26,8 +26,8 @@ lecture5: lectures/lecture5.ipynb
 lecture6: lectures/lecture6.ipynb
 	jupyter nbconvert --to slides lectures/lecture6.ipynb --template=cwi
 
-index: README.md
-	pandoc --standalone README.md --template=html/uikit.html -o html/index.html --toc --metadata title="Inleiding Scientific Computing deel 2 - Computed Tomography"
+index: index.md
+	pandoc --standalone index.md --template=html/uikit.html -o html/index.html --toc --metadata title="Inleiding Scientific Computing deel 2 - Computed Tomography"
 
 website: html
 	ghp-import -n -p -f html
