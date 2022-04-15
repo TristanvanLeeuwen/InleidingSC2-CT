@@ -14425,11 +14425,217 @@ div.jp-InputArea {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="The-Fourier-Slice-Theorem">The Fourier-Slice Theorem<a class="anchor-link" href="#The-Fourier-Slice-Theorem">&#182;</a></h1>
 </div>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The Fourier-Slice Theorem relates the 2D-Fourier transform of $u$ to the 1D-Fourier transform of $f$:</p>
+$$\widehat{f}(\sigma,\theta) = \widehat{u}(|\sigma| \mathbf{n}_\theta),$$<p>with</p>
+$$\widehat{f}(\sigma,\theta) = \int_{\mathbb{R}} f(s,\theta) e^{-2\pi\imath \sigma s}\mathrm{d}s,$$$$\widehat{u}(\mathbf{k}) = \int_{\mathbb{R}^2} u(\mathbf{x}) e^{-2\pi\imath \mathbf{k}\cdot \mathbf{x}}\mathrm{d}\mathbf{x},$$$$\mathbf{n}_\theta = (\cos\theta,\sin\theta).$$
+</div>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>We can visualise this as follows</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Radon_transform_via_Fourier_transform.png/2000px-Radon_transform_via_Fourier_transform.png" alt=""></p>
+
+</div>
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Fourier-reconstruction">Fourier reconstruction<a class="anchor-link" href="#Fourier-reconstruction">&#182;</a></h1>
 </div>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<ul>
+<li>In principle, we can reconstruct the image by performing an inverse Fourier transform</li>
+<li>Having collected <em>discrete</em> measurements $f_{ij} = f(s_i,\theta_j)$, we only have partial information on the Fourier transform of $u$</li>
+<li>Ultimately, we will represent $u$ on a grid of pixels with intenties $u_i = u(\mathbf{x}_i)$</li>
+</ul>
+
+</div>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="The-Discrete-Fourier-Transform">The Discrete Fourier Transform<a class="anchor-link" href="#The-Discrete-Fourier-Transform">&#182;</a></h2><p>The <em>discrete Fourier transform (DFT)</em> of a sequence $\{g_i\}_{i=0}^n$ is defined as</p>
+$$\widehat{g}_i = \sum_{j=0}^{n-1} g_j \exp\left(-\frac{2\pi\imath}{n} ij\right), \quad i = 0, \ldots, n-1.$$<p>If $g_i = g(i\cdot\Delta x)$, then $\widehat{g}_i = \widehat{g}( \ldots )$.</p>
+
+</div>
+</div><div class="fragment">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>In matrix-vector notation, we express this as</p>
+$$\widehat{\mathbf{g}} = F\mathbf{g},$$<p>with $F_{ij} = \exp\left(-\frac{2\pi\imath}{n} ij\right)$.</p>
+
+</div>
+</div></div><div class="fragment">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The inverse is given by</p>
+$$F^{-1} = n^{-1} F^*.$$
+</div>
+</div></div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Be aware that some interesting things may happen with the DFT, when subsampling or truncating the signals.</p>
+
+</div>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="The-Fast-Fourier-Transform">The Fast Fourier Transform<a class="anchor-link" href="#The-Fast-Fourier-Transform">&#182;</a></h2><p>A naive implementation would require $\mathcal{O}(n^2)$ operations to multiply by $F$. With some clever tricks, however, it can be done in $\mathcal{O}(n\log n)$.</p>
+
+</div>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Interpolation">Interpolation<a class="anchor-link" href="#Interpolation">&#182;</a></h2><ul>
+<li>Applying the Fourier transform to $f_{ij}$ gives us samples of $\widehat{u}$ at wavenumbers $\{(\sigma_i \mathbf{n}_{\theta_j})\}$, with $\sigma_i = \ldots$ (assuming again that $f_{ij} = f(i \cdot \Delta s ,
+\theta_j)$)</li>
+<li>To usefully apply the inverse DFT, we need $\widehat{u}$ at wavenumbers $\{(\ldots, \ldots)\}$.</li>
+</ul>
+
+</div>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>A linear interpolation scheme ...</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kk1</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span><span class="n">kk2</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=.</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kt1</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span><span class="n">kt2</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span><span class="s1">&#39;r.&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=.</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">kk1</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span><span class="n">kk2</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span><span class="n">c</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fh</span><span class="o">.</span><span class="n">ravel</span><span class="p">()))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fftshift</span><span class="p">(</span><span class="n">uh</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">nx</span><span class="p">))),</span><span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="nb">max</span><span class="p">(</span><span class="n">k</span><span class="p">),</span><span class="nb">max</span><span class="p">(</span><span class="n">k</span><span class="p">),</span><span class="o">-</span><span class="nb">max</span><span class="p">(</span><span class="n">k</span><span class="p">),</span><span class="nb">max</span><span class="p">(</span><span class="n">k</span><span class="p">)))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_figwidth</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ur</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Representing the sinogram and image as vectors, the image recontruction step can be represented as</p>
+$$\mathbf{u} = (F^{-1} \otimes F^{-1}) T (I \otimes F) \mathbf{f}.$$<p>In Python, we would implement this as</p>
+<div class="highlight"><pre><span></span><span class="n">u</span> <span class="o">..</span>
+</pre></div>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="The-Non-Uniform-Fourier-Transform">The Non-Uniform Fourier Transform<a class="anchor-link" href="#The-Non-Uniform-Fourier-Transform">&#182;</a></h2><p>We can avoid the interpolation step by applying a <em>non-uniform FFT</em>.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">skimage.draw</span> <span class="kn">import</span> <span class="n">disk</span>
+<span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">radon</span>
+<span class="kn">from</span> <span class="nn">scipy.fft</span> <span class="kn">import</span> <span class="n">fft2</span><span class="p">,</span> <span class="n">ifft2</span><span class="p">,</span> <span class="n">fft</span><span class="p">,</span> <span class="n">ifft</span><span class="p">,</span> <span class="n">fftfreq</span><span class="p">,</span> <span class="n">fftshift</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">LinearNDInterpolator</span>
+
+<span class="kn">from</span> <span class="nn">pynufft</span> <span class="kn">import</span> <span class="n">NUFFT</span>
+
+<span class="c1"># settings</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">na</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">180.</span><span class="p">,</span> <span class="n">na</span><span class="p">)</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">nx</span><span class="p">)</span>
+
+<span class="c1"># phantom</span>
+<span class="n">ii</span><span class="p">,</span><span class="n">jj</span> <span class="o">=</span> <span class="n">disk</span><span class="p">((</span><span class="n">nx</span><span class="o">//</span><span class="mi">2</span><span class="o">+</span><span class="n">nx</span><span class="o">//</span><span class="mi">8</span><span class="p">,</span><span class="n">nx</span><span class="o">//</span><span class="mi">2</span><span class="o">+</span><span class="n">nx</span><span class="o">//</span><span class="mi">8</span><span class="p">),</span><span class="mf">0.2</span> <span class="o">*</span> <span class="p">(</span><span class="n">nx</span><span class="o">//</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nx</span><span class="p">,</span><span class="n">nx</span><span class="p">))</span>
+<span class="n">u</span><span class="p">[</span><span class="n">ii</span><span class="p">,</span><span class="n">jj</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># sinogram</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">radon</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">)</span>
+
+<span class="c1"># fourier transform of sinogram</span>
+<span class="n">fh</span> <span class="o">=</span> <span class="n">fft</span><span class="p">(</span><span class="n">fftshift</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">axes</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">fftfreq</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">kk1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">sigma</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">theta</span><span class="o">/</span><span class="mi">180</span><span class="p">))</span>
+<span class="n">kk2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">sigma</span><span class="p">,</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">theta</span><span class="o">/</span><span class="mi">180</span><span class="p">))</span>
+
+<span class="c1"># target grid</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">fftfreq</span><span class="p">(</span><span class="n">nx</span><span class="p">,(</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">kt1</span><span class="p">,</span><span class="n">kt2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">k</span><span class="p">)</span>
+
+<span class="c1"># interpolation</span>
+<span class="n">uh</span> <span class="o">=</span> <span class="n">LinearNDInterpolator</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">kk1</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span><span class="n">kk2</span><span class="o">.</span><span class="n">ravel</span><span class="p">()),</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span><span class="n">fh</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span><span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)(</span><span class="n">kt1</span><span class="p">,</span><span class="n">kt2</span><span class="p">)</span>
+<span class="c1">#uh = griddata((kk1.ravel(),kk2.ravel()),fh.ravel(),(kt1.ravel(),kt2.ravel()),fill_value=0)]</span>
+
+<span class="c1"># ifft</span>
+<span class="n">ur</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">fftshift</span><span class="p">(</span><span class="n">ifft2</span><span class="p">(</span><span class="n">uh</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">nx</span><span class="p">))))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>/opt/anaconda3/lib/python3.8/site-packages/skimage/transform/radon_transform.py:87: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray
+  coords = np.array(np.ogrid[:image.shape[0], :image.shape[1]])
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
