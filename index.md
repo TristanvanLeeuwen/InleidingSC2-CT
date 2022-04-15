@@ -1,57 +1,56 @@
+# Overview
 
-# Overzicht
+In part 2 of *Introduction to Scientific Computing* we get started with Computed Tomography; an imaging method used in, for example, a CT scanner. It takes a lot of calculations to process all the data from a CT scanner into a three-dimensional image, and as you can imagine it is important to have a result within a short time.
 
-In deel 2 van *Inleiding Scientific Computing* gaan we aan de slag met Computed Tomography; een beeldvormingsmethode die wordt gebruikt in bijvoorbeeld een CT scanner. Het vergt veel rekenwerk om alle data uit een CT scanner te verwerken tot een t drie-dimensionaal beeld, en zoals je kunt voorstellen is het belangrijk om binnen korte tijd een resultaat te hebben.
+We learn about:
 
-We leren over:
+* The physics behind X-ray tomography
+* The Radon Transformation and the Fourier Slice Theorem
+* The (discrete) Fourier transform and the non-uniform Fourier transform
+* Discretizing the Radon transformation
+* Various image reconstruction methods, including Filtered Backprojection and Algebraic Reconstruction.
 
-* De fysica achter Röntgentomography
-* De Radontransformatie en de Fourier Slice Theorem
-* De (discrete) Fourier transformatie en de niet-uniforme Fourier transformatie
-* Het discretiseren van de Radon transformatie
-* Verschillende beeldreconstructiemethoden, waaronder Filtered Backprojection en algebraische reconstructie.
+In addition, we pay attention to writing readable and error-free code, version control, comparing different numerical methods and reproducible numerical experiments.
 
-Daarnaast besteden we aandacht aan het schrijven van leesbare en foutloze code, versiebeheer, het vergelijken van verschillende numerieke methoden en reproduceerbare numerieke experimenten.
+The assignments you make every week are processed in pairs into a report in the form of a scientific article of **maximum 10 pages** (including references). Use [this template](https://www.overleaf.com/latex/templates/preparing-a-manuscript-for-submission-to-an-optica-meeting-or-conference/ryxhcjvjfrjk) (available from overleaf) . In addition to the report, you also submit the code.
 
-De opdrachten je iedere week maakt verwerk je in tweetallen tot een verslag in de vorm van een wetenschappelijk artikel van **maximaal 10 pagina's** (inclusief referenties). Gebruik hiervoor [dit template](https://www.overleaf.com/latex/templates/preparing-a-manuscript-for-submission-to-an-optica-meeting-or-conference/ryxhcjvjfrjk) (beschikbaar via overleaf). Naast het verslag lever je ook de code in.
-
-De **deadline** voor het verslag is **vrijdag 24 juni 2022**. Mail je verslag naar [Tristan van Leeuwen](mailto:t.vanleeuwen@uu.nl)
+The **deadline** for the report is **Friday 24 June 2022**. Mail your report to [Tristan van Leeuwen](mailto:t.vanleeuwen@uu.nl)
 
 # Week 1
 
-## Colleges: 
+## Lectures:
 
-In deze lezingen leren we basis van Computed Tomography; de onderliggende fysica en de Fourier Slice Theorem, wat de basis vormt voor tomografische beeldreconstructie.
+In these lectures we learn the basics of Computed Tomography; the underlying physics and the Fourier Slice Theorem, which forms the basis for tomographic image reconstruction.
 
-* [Wat is computed tomography?](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture1.html)
-* [Fourier reconstructie](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture2.html)
+* [What is computed tomography?](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture1.html)
+* [Fourier reconstruction](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture2.html)
 
-## Opdrachten:
+## Assignments:
 
-In deze opdrachten onderzoeken jullie de nauwkeurigheid van de Python methode `radon` en vergelijken jullie verschillende Fourier reconstructiemethoden op nauwkeurigheid en efficientie.
+In these assignments you will investigate the accuracy of the Python method `radon` and compare different Fourier reconstruction methods for accuracy and efficiency.
 
 # Week 2
 
-## Colleges:
+## Lectures:
 
-Deze week gaan we de Radon transformatie discretiseren en verschillende aanpakken vergelijken in efficientie en nauwkeurigheid. Daarnaast kijken we naar een alternatieve reconstructiemethode; Filtered Backprojection (FBP).
+This week we are going to discretize the Radon transformation and compare different approaches in efficiency and accuracy. In addition, we are looking at an alternative reconstruction method; Filtered Back Projection (FBP).
 
-* [Discretisatie van de Radon transformatie](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture3.html)
-* [Filtered backprojection](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture4.html)
+* [Discretization of the Radon transformation](https://tristanvanleeuwen.github.io/IntroductionSC2-CT/lecture3.html)
+* [Filtered backprojection](https://tristanvanleeuwen.github.io/IntroductionSC2-CT/lecture4.html)
 
-## Opdrachten:
+## Assignments:
 
-In de opdrachten deze week onderzoeken jullie welke discretisatie van de Radontransformatie het meest efficient is en hoe het FBP-algoritme efficient te implementeren.
+In this week's assignments you will investigate which discretization of the Radon transformation is most efficient and how to efficiently implement the FBP algorithm.
 
 # Week 3
 
-## Colleges:
+## Lectures:
 
-Deze week kijken we naar nog een klasse van reconstructiemethoden; de algebraische methoden. Ook komen praktische zaken aan bod en gaan we aan de slag met een echte dataset.
+This week we look at another class of reconstruction methods; the algebraic methods. Practical matters are also discussed and we get to work with a real dataset.
 
-* [Algebraische reconstructiemethoden](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture5.html)
-* [Tomografie in de praktijk](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture6.html)
+* [Algebraic reconstruction methods](https://tristanvanleeuwen.github.io/IntroductionSC2-CT/lecture5.html)
+* [Tomography in practice](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture6.html)
 
-## Opdrachten:
+## Assignments:
 
-In de opdrachten vergelijken we verschillende algebraische reconstructiemethoden en ontwerpen een efficient en robuust algoritme. Daarnaast passen we deze toe op een echte dataset.
+In the assignments we compare different algebraic reconstruction methods and design an efficient and robust algorithm. In addition, we apply this to a real dataset.

@@ -14547,12 +14547,18 @@ $$I = I_0 \exp^{-\mu h},$$<p>where</p>
 </div></section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>detection, Poisson, multi-energy, log correction, non-homogeneous materials</li>
-</ul>
-
+<p>If the X-ray passes through multiple materials, we have</p>
+$$I = I_0 \exp\left(-\sum_i \mu_i h_i\right),$$<p></p>
+<p>which in the limit becomes</p>
+$$I = I_0 \exp\left(-\int \mu(t) \mathrm{d}t\right).$$
 </div>
-</div></section></section><section><section>
+</div><div class="fragment">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>We can transform this to a linear relation between measured and unknown quantities:</p>
+$$-\log\left(I / I_0\right) = \int \mu(t) \mathrm{d}t.$$
+</div>
+</div></div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="The-Radon-Transform">The Radon Transform<a class="anchor-link" href="#The-Radon-Transform">&#182;</a></h1>
@@ -14567,9 +14573,18 @@ $$I = I_0 \exp^{-\mu h},$$<p>where</p>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>This transformation, from an image $u(x,y)$ to a sinogram $f(s,\theta)$ is described by the Radon transform</p>
-$$f(s,\theta) = \int ...$$
+$$f(s,\theta) = \int_{-\infty}^\infty u\left(x(s,t), y(s,t)\right) \mathrm{d}t,$$<p>with</p>
+$$x(s,t) = s \cos \theta + t \sin \theta, \quad y(s,t) = s \sin \theta - t\cos\theta.$$
 </div>
-</div></section><section>
+</div><div class="fragment">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>For simple shapes we can compute the Radon transform by hand. In general, we use a discretised version, for example available in Python via the <code>radon</code> function.</p>
+<div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">radon</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div></div></section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><img src="./figures/lecture1/sino_dots.png" alt=""></p>
@@ -14612,6 +14627,28 @@ $$f(s,\theta) = \int ...$$
 </div></section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="highlight"><pre><span></span><span class="c1"># settings</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="mi">400</span>
+<span class="n">na</span> <span class="o">=</span> <span class="mi">400</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">180.</span><span class="p">,</span> <span class="n">na</span><span class="p">)</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># phantom</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">shepp_logan_phantom</span><span class="p">()</span>
+
+<span class="c1"># sinogram</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">radon</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">f_noisy</span> <span class="o">=</span> <span class="n">f</span> <span class="o">+</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span><span class="n">na</span><span class="p">)</span>
+
+<span class="c1"># reconstruction</span>
+<span class="n">u_fbp</span> <span class="o">=</span> <span class="n">iradon</span><span class="p">(</span><span class="n">f_noisy</span><span class="p">,</span><span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><img src="./figures/lecture1/fbp_shepplogan.png" alt=""></p>
 
 </div>
 </div></section></section>
