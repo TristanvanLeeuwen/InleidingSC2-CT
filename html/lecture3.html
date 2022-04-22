@@ -66,10 +66,10 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
 <style type="text/css">
     pre { line-height: 125%; margin: 0; }
-td.linenos pre { color: #000000; background-color: #f0f0f0; padding: 0 5px 0 5px; }
-span.linenos { color: #000000; background-color: #f0f0f0; padding: 0 5px 0 5px; }
-td.linenos pre.special { color: #000000; background-color: #ffffc0; padding: 0 5px 0 5px; }
-span.linenos.special { color: #000000; background-color: #ffffc0; padding: 0 5px 0 5px; }
+td.linenos pre { color: #000000; background-color: #f0f0f0; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #000000; background-color: #f0f0f0; padding-left: 5px; padding-right: 5px; }
+td.linenos pre.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
 .highlight .hll { background-color: var(--jp-cell-editor-active-background) }
 .highlight { background: var(--jp-cell-editor-background); color: var(--jp-mirror-editor-variable-color) }
 .highlight .c { color: var(--jp-mirror-editor-comment-color); font-style: italic } /* Comment */
@@ -14274,10 +14274,12 @@ a.anchor-link {
 :root {
   --color-1: #cd003a;
   --color-2: #00493d;
-  --logo: url("cwi_logo.png") ;
+  --logo: url("cwi_logo.png");
+  --font: verdana-bold;
+  --pointer: url('red_32.png');
 }
 body { /* Change the logo urls in the line after if needed */
-    background: url("cwi_logo.png") !important;
+    background: var(--logo) !important;
     background-size: 20% !important;
     background-position: 1% -2% !important;
     background-repeat: no-repeat !important;
@@ -14289,7 +14291,7 @@ body { /* Change the logo urls in the line after if needed */
   width: inherit;
   padding: 0.4em;
   margin: 0px;
-  font-family: verdana;
+  font-family: var(--font);
   font-size: 80%;
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
 }
@@ -14304,15 +14306,10 @@ body { /* Change the logo urls in the line after if needed */
   height: 400px;
   width: auto;
 }
-/*.reveal i {
-  font-style: normal;
-  font-family: verdana;
-  font-size: 2em;
-}*/
 
 .reveal h1 {
   text-transform: none;
-  font-family: verdana-bold;
+  font-family: var(--font);
   font-style: normal;
   font-size: 36px;
   color: var(--color-1);
@@ -14320,15 +14317,14 @@ body { /* Change the logo urls in the line after if needed */
 
 .reveal h2 {
   text-transform: none;
-  font-family: verdana-bold;
+  font-family: var(--font);
   font-style: normal;
   font-size: 28px;
 }
 .reveal p {
-  font-family: verdana;
+  font-family: var(--font);
   font-size: 20px;
 }
-
 .reveal .slides {
   text-align: left;
 }
@@ -14366,37 +14362,8 @@ div.jp-InputArea {
 }
 
 .reveal {
-  cursor: url('red_32.png'), crosshair;
+  cursor: var(--pointer), crosshair;
 }
-
-/* Reveal navigation controls */
-
-/*.reveal .controls div.navigate-left,
-.reveal .controls div.navigate-left.enabled {
-  border-right-color: #52A3D9 !important;
-}
-
-.reveal .controls div.navigate-right, .reveal .controls div.navigate-right.enabled {
-  border-left-color: var(--color-1) !important; }
-
-.reveal .controls div.navigate-up, .reveal .controls div.navigate-up.enabled {
-  border-bottom-color: var(--color-1) !important; }
-
-.reveal .controls div.navigate-down, .reveal .controls div.navigate-down.enabled {
-  border-top-color: var(--color-1) !important; }
-
-.reveal .controls div.navigate-left.enabled:hover {
-  border-right-color: var(--color-2) !important; }
-
-.reveal .controls div.navigate-right.enabled:hover {
-  border-left-color: var(--color-2) !important; }
-
-.reveal .controls div.navigate-up.enabled:hover {
-  border-bottom-color: var(--color-2) !important; }
-
-.reveal .controls div.navigate-down.enabled:hover {
-  border-top-color: var(--color-2) !important; }
-*/
 
 .reveal .controls .navigate-left {
     /* right: 6.4em;
@@ -14432,22 +14399,6 @@ div.jp-InputArea {
 .reveal .progress span {
   background: var(--color-1) !important;
 }
-
-/* Scrollbars */
-/*
-::-webkit-scrollbar
-{
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar *
-{
-  background:transparent;
-}
-::-webkit-scrollbar-thumb
-{
-  background: var(--color-1) !important;
-}*/
 </style>
 
 </head>

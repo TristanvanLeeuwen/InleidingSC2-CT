@@ -16,6 +16,14 @@ The assignments you make every week are processed in pairs into a report in the 
 
 The **deadline** for the report is **Friday 24 June 2022**. Mail your report to [Tristan van Leeuwen](mailto:t.vanleeuwen@uu.nl)
 
+# Usefull resources
+
+* [`Matplotlib` cheatsheet (basics)](https://camo.githubusercontent.com/b1b8838502a81077591ccadbf45dc45f2207637b41245e557198b680b0a2e662/68747470733a2f2f6d6174706c6f746c69622e6f72672f63686561747368656574732f68616e646f75742d626567696e6e65722e706e67)
+* [`Matplotlib` cheatsheet (advanced)](https://camo.githubusercontent.com/fc055a0d3897e7aec7ec66fc1d7f70cfb2873f82eb5be4ea977286a1cf08fa74/68747470733a2f2f6d6174706c6f746c69622e6f72672f63686561747368656574732f68616e646f75742d696e7465726d6564696174652e706e67)
+* [`Matplotlib` cheatsheet (expert)](https://camo.githubusercontent.com/62a744e98372f7aaad377cf1f535dcc10117ff196c876102682b03ca4759f420/68747470733a2f2f6d6174706c6f746c69622e6f72672f63686561747368656574732f68616e646f75742d746970732e706e67)
+* [`NumPy` cheatsheet](http://datacamp-community-prod.s3.amazonaws.com/ba1fe95a-8b70-4d2f-95b0-bc954e9071b0)
+* [`NumPy` for Matlab users](https://numpy.org/doc/stable/user/numpy-for-matlab-users.html)
+
 # Week 1
 
 ## Lectures:
@@ -27,7 +35,10 @@ In these lectures we learn the basics of Computed Tomography; the underlying phy
 
 ## Assignments:
 
-In these assignments you will investigate the accuracy of the Python method `radon` and compare different Fourier reconstruction methods for accuracy and efficiency.
+In these assignments you will investigate the accuracy of the Python method `radon` and compare different Fourier reconstruction methods for accuracy. After these assignments you will know:
+
+* how to work with the DFT and FFT in Python
+* how to implement bi-linear interpolation in Python
 
 # Week 2
 
@@ -40,7 +51,10 @@ This week we are going to discretize the Radon transformation and compare differ
 
 ## Assignments:
 
-In this week's assignments you will investigate which discretization of the Radon transformation is most efficient and how to efficiently implement the FBP algorithm.
+In this week's assignments you will investigate which discretization of the Radon transformation is most efficient and how to efficiently implement the FBP algorithm. After these assignments you will know:
+
+* how to work with sparse matrices in Python
+* how to implement matrix-free linear operators
 
 # Week 3
 
@@ -53,4 +67,7 @@ This week we look at another class of reconstruction methods; the algebraic meth
 
 ## Assignments:
 
-In the assignments we compare different algebraic reconstruction methods and design an efficient and robust algorithm. In addition, we apply this to a real dataset.
+In the assignments we compare different algebraic reconstruction methods and design an efficient and robust algorithm. In addition, we apply this to a real dataset. After these assignments you will know:
+
+* how to efficiently implement various iterative methods for tomographic reconstruction
+* how to apply the developed methods to a real tomographic dataset
