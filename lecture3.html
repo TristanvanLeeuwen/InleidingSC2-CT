@@ -14700,8 +14700,9 @@ $$x(s,t) = s \cos \theta + t \sin \theta, \quad y(s,t) = s \sin \theta - t\cos\t
 <li>Let $(x,y) \in [-1,1]^2$ and discretise the image in $n_x \times n_y$ pixels with size $2/n_x \times 2/n_y$.</li>
 <li>The contribution of the $j-th$ pixel to the $i-th$ detector element at angle $\theta$ is then given by </li>
 </ul>
-$$a_{ij}(\theta) = ....$$<ul>
-<li>The measurement along a single angle then leads to a matrix $A(\theta) \in \mathbb{R}^{n_d \times n_x \times n_y}$</li>
+$$a_{ij}(\theta) = \int_{-\infty}^\infty \phi_j\left(x(s_i,t), y(s_i,t)\right) \mathrm{d}t,$$<p>with $\phi_j(x,y)$ is supported on the $j-th$ pixel.</p>
+<ul>
+<li>The measurement along a single angle then leads to a matrix $A(\theta) \in \mathbb{R}^{n_d \times n_x \dot n_y}$</li>
 </ul>
 
 </div>
@@ -14712,22 +14713,239 @@ $$a_{ij}(\theta) = ....$$<ul>
 $$A = \left( \begin{matrix} A(\theta_1) \\ A(\theta_2) \\ \vdots \\ A(\theta_k)\end{matrix}\right).$$<p>The vectorised discretised sinogram and image are then related via</p>
 $$\mathbf{f} = A\mathbf{u}.$$
 </div>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="The-line-model">The line model<a class="anchor-link" href="#The-line-model">&#182;</a></h2><ul>
+<li>The weights $a_{ij}$ represent the length of the intersection between the $j-th$ ray and the $i-th$ pixel.</li>
+<li>We can compute these efficiently by solving for $t$ from
+$$x = s \cos \theta + t \sin \theta, \quad y = s \sin \theta - t\cos\theta,$$
+where $s$ is given and $x,y$ are the grid lines.</li>
+<li>This yields an array of intersection points $\{t_i\}_i$ along the ray and $t_{i} - t_{i-1}$ gives the intersection length</li>
+</ul>
+
+</div>
+</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="mf">.1</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">tx</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">s</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">ty</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">s</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">tx</span><span class="p">,</span><span class="n">ty</span><span class="p">)))</span>
+
+<span class="n">xi</span> <span class="o">=</span> <span class="n">s</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">t</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<span class="n">yi</span> <span class="o">=</span> <span class="n">s</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">-</span> <span class="n">t</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Help on function grid in module matplotlib.pyplot:
+
+grid(visible=None, which=&#39;major&#39;, axis=&#39;both&#39;, **kwargs)
+    Configure the grid lines.
+    
+    Parameters
+    ----------
+    visible : bool or None, optional
+        Whether to show the grid lines.  If any *kwargs* are supplied, it
+        is assumed you want the grid on and *visible* will be set to True.
+    
+        If *visible* is *None* and there are no *kwargs*, this toggles the
+        visibility of the lines.
+    
+    which : {&#39;major&#39;, &#39;minor&#39;, &#39;both&#39;}, optional
+        The grid lines to apply the changes on.
+    
+    axis : {&#39;both&#39;, &#39;x&#39;, &#39;y&#39;}, optional
+        The axis to apply the changes on.
+    
+    **kwargs : `.Line2D` properties
+        Define the line properties of the grid, e.g.::
+    
+            grid(color=&#39;r&#39;, linestyle=&#39;-&#39;, linewidth=2)
+    
+        Valid keyword arguments are:
+    
+        Properties:
+        agg_filter: a filter function, which takes a (m, n, 3) float array and a dpi value, and returns a (m, n, 3) array
+        alpha: scalar or None
+        animated: bool
+        antialiased or aa: bool
+        clip_box: `.Bbox`
+        clip_on: bool
+        clip_path: Patch or (Path, Transform) or None
+        color or c: color
+        dash_capstyle: `.CapStyle` or {&#39;butt&#39;, &#39;projecting&#39;, &#39;round&#39;}
+        dash_joinstyle: `.JoinStyle` or {&#39;miter&#39;, &#39;round&#39;, &#39;bevel&#39;}
+        dashes: sequence of floats (on/off ink in points) or (None, None)
+        data: (2, N) array or two 1D arrays
+        drawstyle or ds: {&#39;default&#39;, &#39;steps&#39;, &#39;steps-pre&#39;, &#39;steps-mid&#39;, &#39;steps-post&#39;}, default: &#39;default&#39;
+        figure: `.Figure`
+        fillstyle: {&#39;full&#39;, &#39;left&#39;, &#39;right&#39;, &#39;bottom&#39;, &#39;top&#39;, &#39;none&#39;}
+        gid: str
+        in_layout: bool
+        label: object
+        linestyle or ls: {&#39;-&#39;, &#39;--&#39;, &#39;-.&#39;, &#39;:&#39;, &#39;&#39;, (offset, on-off-seq), ...}
+        linewidth or lw: float
+        marker: marker style string, `~.path.Path` or `~.markers.MarkerStyle`
+        markeredgecolor or mec: color
+        markeredgewidth or mew: float
+        markerfacecolor or mfc: color
+        markerfacecoloralt or mfcalt: color
+        markersize or ms: float
+        markevery: None or int or (int, int) or slice or list[int] or float or (float, float) or list[bool]
+        path_effects: `.AbstractPathEffect`
+        picker: float or callable[[Artist, Event], tuple[bool, dict]]
+        pickradius: float
+        rasterized: bool
+        sketch_params: (scale: float, length: float, randomness: float)
+        snap: bool or None
+        solid_capstyle: `.CapStyle` or {&#39;butt&#39;, &#39;projecting&#39;, &#39;round&#39;}
+        solid_joinstyle: `.JoinStyle` or {&#39;miter&#39;, &#39;round&#39;, &#39;bevel&#39;}
+        transform: unknown
+        url: str
+        visible: bool
+        xdata: 1D array
+        ydata: 1D array
+        zorder: float
+    
+    Notes
+    -----
+    The axis is drawn as a unit, so the effective zorder for drawing the
+    grid is determined by the zorder of each axis, not by the zorder of the
+    `.Line2D` objects comprising the grid.  Therefore, to set grid zorder,
+    use `.set_axisbelow` or, for more control, call the
+    `~.Artist.set_zorder` method of each axis.
+
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Sparse-matrices">Sparse matrices<a class="anchor-link" href="#Sparse-matrices">&#182;</a></h1>
+</div>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<ul>
+<li>Let $n_x = n_y = n$ and $n_d = n_\theta = n$.</li>
+<li>We can easily see that we only have $\mathcal{O}(n)$ non-zeros in each row of the matrix; so $\mathcal{O}(n^3)$ non-zeros in total</li>
+<li>It is not very attractive to store and compute with all the zero-entries explicitly</li>
+</ul>
+
+</div>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Sparse-matrix-formats">Sparse matrix formats<a class="anchor-link" href="#Sparse-matrix-formats">&#182;</a></h2>
 </div>
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Matrix-free-implementation">Matrix-free implementation<a class="anchor-link" href="#Matrix-free-implementation">&#182;</a></h1>
 </div>
-</div></section></section><section><section>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<ul>
+<li>For 3D applications, we'd end up with a matrix with $\mathcal{O}(n^4)$ non-zeros</li>
+<li>Using double precision, storage may take several Terabytes in practice ($n = 1000$).</li>
+<li>Can we instead compute the matrix elements on-the-fly?</li>
+</ul>
+
+</div>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<ul>
+<li>We can write a function to perform multiplication of $A$ by a given vector <em>implicitly</em></li>
+<li>This avoids storage, but may induce some computational overhead</li>
+<li>We <em>cannot</em> access individual elements of the matrix easily</li>
+<li>We need to write a seperate function to multiply with the transpose of the matrix</li>
+</ul>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="An-example">An example<a class="anchor-link" href="#An-example">&#182;</a></h2><p>Consider a finite-difference matrix</p>
+$$A = \left(\begin{matrix}-2 &amp; 1&amp; 0  &amp; \ldots &amp; \\ 1 &amp; -2 &amp; 1 &amp; 0 \\ &amp; \ddots &amp; \ddots &amp; \ddots &amp; \\ 0 &amp; \ldots &amp;0 &amp; 1 &amp; -2 \end{matrix}\right).$$<p>The function would look like</p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">FD</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">v</span>       <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>    <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+    <span class="n">v</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>   <span class="o">=</span> <span class="n">u</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Another-example">Another example<a class="anchor-link" href="#Another-example">&#182;</a></h2><p>Consider summing the elements of a vector</p>
+$$A = (1, 1, 1, \ldots, 1).$$<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div><div class="fragment">
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sum_transpose</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">v</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div></div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Assignments">Assignments<a class="anchor-link" href="#Assignments">&#182;</a></h1>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
