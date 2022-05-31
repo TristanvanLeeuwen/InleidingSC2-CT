@@ -16,13 +16,14 @@ The assignments you make every week are processed in pairs into a report in the 
 
 The **deadline** for the report is **Friday 24 June 2022**. Mail your report to [Tristan van Leeuwen](mailto:t.vanleeuwen@uu.nl)
 
-# Usefull resources
+# Useful resources
 
 * [`Matplotlib` cheatsheet (basics)](https://camo.githubusercontent.com/b1b8838502a81077591ccadbf45dc45f2207637b41245e557198b680b0a2e662/68747470733a2f2f6d6174706c6f746c69622e6f72672f63686561747368656574732f68616e646f75742d626567696e6e65722e706e67)
 * [`Matplotlib` cheatsheet (advanced)](https://camo.githubusercontent.com/fc055a0d3897e7aec7ec66fc1d7f70cfb2873f82eb5be4ea977286a1cf08fa74/68747470733a2f2f6d6174706c6f746c69622e6f72672f63686561747368656574732f68616e646f75742d696e7465726d6564696174652e706e67)
 * [`Matplotlib` cheatsheet (expert)](https://camo.githubusercontent.com/62a744e98372f7aaad377cf1f535dcc10117ff196c876102682b03ca4759f420/68747470733a2f2f6d6174706c6f746c69622e6f72672f63686561747368656574732f68616e646f75742d746970732e706e67)
 * [`NumPy` cheatsheet](http://datacamp-community-prod.s3.amazonaws.com/ba1fe95a-8b70-4d2f-95b0-bc954e9071b0)
 * [`NumPy` for Matlab users](https://numpy.org/doc/stable/user/numpy-for-matlab-users.html)
+* [`Github` repository with the Jupyter notebooks](https://github.com/TristanvanLeeuwen/InleidingSC2-CT)
 
 # Week 1
 
