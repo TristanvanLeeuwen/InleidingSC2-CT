@@ -14434,6 +14434,13 @@ div.jp-InputArea {
 </div></section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>It is defined as</p>
+$$u(\mathbf{x}) = \frac{1}{2\pi}\int_{0}^{2\pi} f(\mathbf{x}\cdot \mathbf{n}_\theta,\theta) \mathrm{d}\theta,$$<p>and is equivalent to the transpose of the mastrix in the discrete setting.</p>
+
+</div>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><img src="./figures/lecture4/bp_dots.png" alt=""></p>
 
 </div>
@@ -14442,10 +14449,50 @@ div.jp-InputArea {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Some-useful-properties-of-the-Radon-transform">Some useful properties of the Radon transform<a class="anchor-link" href="#Some-useful-properties-of-the-Radon-transform">&#182;</a></h2>
 </div>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The second derivatices in $\mathbf{x}$ and $s$ intertwine with the Radon transform as follows</p>
+$$R \Delta_\mathbf{x} u = \partial_s^2 R u, $$<p>and</p>
+$$R^* \partial_s^2 f = \Delta_\mathbf{x} R^*f.$$
+</div>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Furthermore</p>
+$$R^*\!R u = 2 \cdot (-\Delta_{\mathbf{x}})^{-1/2}u,$$<p>and</p>
+$$RR^* f = 2 \cdot (-\partial_s^2)^{-1/2} f.$$
+</div>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>This suggests we can invert the Radon transform via backprojection followed by 2D-filtering</p>
+$$u = \textstyle{\frac{1}{2}} \cdot (-\Delta_{\mathbf{x}})^{1/2} R^*f,$$<p>or 1D-filtering followed by backprojection</p>
+$$u = \textstyle{\frac{1}{2}} \cdot R^* (-\partial_s^2)^{1/2} f$$
+</div>
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Filtered-back-projection">Filtered back projection<a class="anchor-link" href="#Filtered-back-projection">&#182;</a></h2>
+</div>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<iframe width="560" height="315" src="http://www.siltanen-research.net/IPexamples/slides/tomographic_imaging_with_full_data/SL_FBPrecon.mp4" frameborder="0" allowfullscreen></iframe><p>(Courtesy of <a href="http://www.siltanen-research.net/">Samuli Siltanen</a>)</p>
+
+</div>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The filter is naturally defined through the Fourier transform as it is equivelant to multiplying by $|\sigma|$ in the Fourier domain.</p>
+<p><img src="./figures/lecture4/filters.png" alt=""></p>
+
+</div>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><img src="./figures/lecture4/fbp.png" alt=""></p>
+
 </div>
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
