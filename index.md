@@ -47,8 +47,10 @@ In these assignments you will investigate the accuracy of the Python method `rad
 
 This week we are going to discretize the Radon transformation and compare different approaches in efficiency and accuracy. In addition, we are looking at an alternative reconstruction method; Filtered Back Projection (FBP).
 
-* [Discretization of the Radon transformation](https://tristanvanleeuwen.github.io/IntroductionSC2-CT/lecture3.html)
-* [Filtered backprojection](https://tristanvanleeuwen.github.io/IntroductionSC2-CT/lecture4.html)
+* [Discretization of the Radon transformation](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture3.html#/)
+https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture3.html#/
+* [Filtered backprojection](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture4.html#/
+)
 
 ## Assignments:
 
@@ -63,8 +65,8 @@ In this week's assignments you will investigate which discretization of the Rado
 
 This week we look at another class of reconstruction methods; the algebraic methods. Practical matters are also discussed and we get to work with a real dataset.
 
-* [Algebraic reconstruction methods](https://tristanvanleeuwen.github.io/IntroductionSC2-CT/lecture5.html)
-* [Tomography in practice](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture6.html)
+* [Algebraic reconstruction methods](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture5.html#/)
+* [Tomography in practice](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture6.html#/)
 
 ## Assignments:
 
