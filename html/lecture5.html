@@ -14468,7 +14468,7 @@ $$e^{(k+1)} = \left(I - \alpha K^T\!K \right)e^{(k)},$$<p>so error components co
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Convergence to the true solution:</p>
-$$e^{(k+1)} = \left(I - \alpha K^T\!K \right)e^{(k)} - K^T\epsilon.$$
+$$e^{(k+1)} = \left(I - \alpha K^T\!K \right)e^{(k)} - \alpha K^T\epsilon.$$
 </div>
 </div></section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
@@ -14476,6 +14476,7 @@ $$e^{(k+1)} = \left(I - \alpha K^T\!K \right)e^{(k)} - K^T\epsilon.$$
 <h2 id="Computing-the-steplength">Computing the steplength<a class="anchor-link" href="#Computing-the-steplength">&#182;</a></h2><ul>
 <li>Determine $\alpha$ such that the eigenvalues of $\left(I - \alpha K^T\!K \right)$ are $\in (-1,1)$</li>
 <li>let $\alpha \in (0, 2/\lambda_\max (K^T\!K) )$</li>
+<li>use that $(K^T\!K)^k v$ tends to largest eigenvector of $K^T\!K$ as $k\rightarrow \infty$</li>
 <li>use $\|K\|_2^2 \leq \|K\|_1 \|K\|_\infty$.</li>
 </ul>
 
@@ -14503,6 +14504,16 @@ $$u^{(k+1)} = u^{(k)} - \frac{f_i - k_i^Tu^{(k)}}{\|k_i\|_2^2} k_i^T,$$<p>with $
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><img src="./figures/lecture5/kaczmarz_0.1.png" alt=""></p>
+
+</div>
+</div></section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Convergence">Convergence<a class="anchor-link" href="#Convergence">&#182;</a></h2><ul>
+<li>Many results when system is consistent</li>
+<li>May not converge when system is inconsistent</li>
+<li>Relaxed version converges to solution to weighted least-squares problem</li>
+</ul>
 
 </div>
 </div></section></section><section><section>
