@@ -14623,7 +14623,9 @@ $$x(s,t) = s \cos \theta + t \sin \theta, \quad y(s,t) = s \sin \theta - t\cos\t
 </div></section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Assignment-1">Assignment 1<a class="anchor-link" href="#Assignment-1">&#182;</a></h2><p>Compute the exact Radon transform for a uniform square, and compare the result of <code>radon</code> to the exact result.</p>
+<h2 id="Assignment-1">Assignment 1<a class="anchor-link" href="#Assignment-1">&#182;</a></h2><p>Compute the exact Radon transform for a uniform square:
+$$u(x,y) = \begin{cases}1 &amp; \text{for} &amp; (x,y)\in[-1,1]^2 \\ 0 &amp; \text{otherwise}\end{cases},$$
+and compare the result of <code>radon</code> to the exact result.</p>
 
 </div>
 </div></section><section>
@@ -14632,11 +14634,12 @@ $$x(s,t) = s \cos \theta + t \sin \theta, \quad y(s,t) = s \sin \theta - t\cos\t
 <h2 id="Assignment-2">Assignment 2<a class="anchor-link" href="#Assignment-2">&#182;</a></h2><ul>
 <li><p>Write a function which, for given <code>theta</code> and <code>sigma</code> produces data for the Shepp-logan phantom, and returns the reconstructed image.</p>
 </li>
-<li><p>Compute the reconstruction error for fixed <code>theta = np.linspace(0., 180., na)</code> and varying <code>sigma</code>. Present the results in a graph and table.</p>
+<li><p>Compute the reconstruction error for fixed <code>theta = np.linspace(0., 180., na)</code> with <code>na = 400</code> for various values of <code>sigma</code>. Present the results in a graph and table.</p>
 </li>
 <li><p>Compute the reconstruction error for fixed <code>sigma = 0</code> and varying <code>na</code>. Present the results in a graph and table.</p>
 </li>
 </ul>
+<p>Draw conclusions about the influence of angular sampling and noise on the reconstruction error.</p>
 <p>Some example code can be found on the next slide.</p>
 
 </div>

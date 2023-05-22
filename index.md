@@ -12,9 +12,9 @@ We learn about:
 
 In addition, we pay attention to writing readable and error-free code, version control, comparing different numerical methods and reproducible numerical experiments.
 
-The assignments you make every week are processed in pairs into a report in the form of a scientific article of **maximum 10 pages** (including references). Use [this template](https://www.overleaf.com/latex/templates/preparing-a-manuscript-for-submission-to-an-optica-meeting-or-conference/ryxhcjvjfrjk) (available from overleaf) . In addition to the report, you also submit the code.
+The assignments you make every week are processed in pairs into a report of **maximum 10 pages** (including references, excluding code). In addition to the report, you also submit the code (as github link or .zip file).
 
-The **deadline** for the report is **Friday 24 June 2022**. Mail your report to [Tristan van Leeuwen](mailto:t.vanleeuwen@uu.nl)
+The **deadline** for the report is **Friday June 30th 2023**. Mail your report to [Tristan van Leeuwen](mailto:t.vanleeuwen@uu.nl)
 
 # Useful resources
 
@@ -34,7 +34,7 @@ In these lectures we learn the basics of Computed Tomography; the underlying phy
 * [What is computed tomography?](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture1.html)
 * [Fourier reconstruction](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture2.html)
 
-## Assignments (Practical session on June 1st):
+## Assignments (Practical sessions on May 30th 15:15 - 17:00 and June 1st 09:00 - 12:45):
 
 In these assignments you will investigate the accuracy of the Python method `radon` and compare different Fourier reconstruction methods for accuracy. After these assignments you will know:
 
@@ -43,7 +43,7 @@ In these assignments you will investigate the accuracy of the Python method `rad
 
 # Week 2
 
-## Lectures (Lectures on June 6th 15:15 - 17:00):
+## Lectures (Lecture on June 6th 15:15 - 17:00):
 
 This week we are going to discretize the Radon transformation and compare different approaches in efficiency and accuracy. In addition, we are looking at an alternative reconstruction method; Filtered Back Projection (FBP).
 
@@ -52,7 +52,7 @@ https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture3.html#/
 * [Filtered backprojection](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture4.html#/
 )
 
-## Assignments (Practical session on June 8th):
+## Assignments (Practical sessions on June 6th 13:15 - 15:00 and June 8th 09:00 - 12:45):
 
 In this week's assignments you will investigate which discretization of the Radon transformation is most efficient and how to efficiently implement the FBP algorithm. After these assignments you will know:
 
@@ -61,14 +61,14 @@ In this week's assignments you will investigate which discretization of the Rado
 
 # Week 3
 
-## Lectures (Lectures on June 13th 15:15 - 17:00):
+## Lectures (Lecture on June 13th 15:15 - 17:00):
 
 This week we look at another class of reconstruction methods; the algebraic methods. Practical matters are also discussed and we get to work with a real dataset.
 
 * [Algebraic reconstruction methods](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture5.html#/)
 * [Tomography in practice](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture6.html#/)
 
-## Assignments (Practical session on June 15th):
+## Assignments (Practical sessions on June 13th 13:15 - 15:00 and June 15th 09:00 - 12:45):
 
 In the assignments we compare different algebraic reconstruction methods and design an efficient and robust algorithm. In addition, we apply this to a real dataset. After these assignments you will know:
 
