@@ -48,9 +48,7 @@ In these assignments you will investigate the accuracy of the Python method `rad
 This week we are going to discretize the Radon transformation and compare different approaches in efficiency and accuracy. In addition, we are looking at an alternative reconstruction method; Filtered Back Projection (FBP).
 
 * [Discretization of the Radon transformation](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture3.html#/)
-https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture3.html#/
-* [Filtered backprojection](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture4.html#/
-)
+* [Filtered backprojection](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture4.html#/)
 
 ## Assignments (Practical sessions on June 6th 13:15 - 15:00 and June 8th 09:00 - 12:45):
 
