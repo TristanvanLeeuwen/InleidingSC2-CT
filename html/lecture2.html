@@ -14450,8 +14450,8 @@ $$g(\mathbf{x}) = \int_{\mathbb{R}^n} \widehat{g}(\boldsymbol{\xi}) e^{2\pi\imat
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>The Fourier-Slice Theorem relates the 2D-Fourier transform of $u$ to the 1D-Fourier transform of $f$:</p>
-$$\widehat{f}(\sigma,\theta) = \widehat{u}(\sigma \mathbf{n}_\theta),$$<p>with</p>
-$$\widehat{f}(\sigma,\theta) = \int_{\mathbb{R}} f(s,\theta) e^{-2\pi\imath \sigma s}\mathrm{d}s,$$$$\widehat{u}(\mathbf{k}) = \int_{\mathbb{R}^2} u(\mathbf{x}) e^{-2\pi\imath \mathbf{k}\cdot \mathbf{x}}\mathrm{d}\mathbf{x},$$$$\mathbf{n}_\theta = (\cos\theta,\sin\theta).$$
+$$\widehat{f}(\theta, \sigma) = \widehat{u}(\sigma \mathbf{n}_\theta),$$<p>with</p>
+$$\widehat{f}(\theta,\sigma) = \int_{\mathbb{R}} f(\theta,s) e^{-2\pi\imath \sigma s}\mathrm{d}s,$$$$\widehat{u}(\mathbf{k}) = \int_{\mathbb{R}^2} u(\mathbf{x}) e^{-2\pi\imath \mathbf{k}\cdot \mathbf{x}}\mathrm{d}\mathbf{x},$$$$\mathbf{n}_\theta = (\cos\theta,-\sin\theta).$$
 </div>
 </div></section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
@@ -14470,7 +14470,7 @@ $$\widehat{f}(\sigma,\theta) = \int_{\mathbb{R}} f(s,\theta) e^{-2\pi\imath \sig
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
 <li>In principle, we can reconstruct the image by performing an inverse Fourier transform</li>
-<li>Having collected <em>discrete</em> measurements $f_{ij} = f(s_i,\theta_j)$, we only have partial information on the Fourier transform of $u$</li>
+<li>Having collected <em>discrete</em> measurements $f_{ij} = f(\theta_j,s_i)$, we only have partial information on the Fourier transform of $u$</li>
 <li>Ultimately, we will represent $u$ on a grid of pixels with intenties $u_i = u(\mathbf{x}_i)$</li>
 </ul>
 
@@ -14631,17 +14631,20 @@ $$p(x,y) = a \cdot x \cdot y + b \cdot x + c \cdot y + d,$$<p>and set up a syste
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Assignment-1">Assignment 1<a class="anchor-link" href="#Assignment-1">&#182;</a></h2><p>Implement a function to bi-linearly interpolate data from a polar grid <code>r,theta</code> to a cartesian grid <code>x,y</code>. Use the following template</p>
-<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rad2cart</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">interpolate</span><span class="p">(</span><span class="n">f_hat</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">ks</span><span class="p">,</span> <span class="n">kx</span><span class="p">,</span> <span class="n">ky</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Bi-linear interpolation from radial grid (r,theta) to cartesian grid (x,y).</span>
+<span class="sd">    Bi-linear interpolation from radial grid (ks,theta) to cartesian grid (kx,ky), </span>
+<span class="sd">    related via kx = ks*cos(theta), ky = -ks*sin(theta).</span>
+
+<span class="sd">    The radial coordinates are assumed to include negative radii and theta \in [0,pi).</span>
 
 <span class="sd">    Input: </span>
-<span class="sd">        data     - 2d array of size (nr,ntheta) containing values on the radial grid</span>
-<span class="sd">        r, theta - 1d arrays of size nr and nt containing the polar gridpoints</span>
-<span class="sd">        x,y      - 1d arrays of size nx and ny containing the cartesian gridpoints</span>
+<span class="sd">        f_hat     - 2d array of size (ns,ntheta) containing values on the radial grid</span>
+<span class="sd">        theta, ks - 1d arrays of size ns and nt containing the polar gridpoints</span>
+<span class="sd">        kx, ky    - 1d arrays of size nx and ny containing the cartesian gridpoints</span>
 
 <span class="sd">    Output:</span>
-<span class="sd">        result   - 2d array of size (nx,nt) containing the interpolated values</span>
+<span class="sd">        u_hat     - 2d array of size (nx,nt) containing the interpolated values</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 </pre></div>
 
