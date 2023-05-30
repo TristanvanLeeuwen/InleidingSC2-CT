@@ -14450,8 +14450,8 @@ $$g(\mathbf{x}) = \int_{\mathbb{R}^n} \widehat{g}(\boldsymbol{\xi}) e^{2\pi\imat
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>The Fourier-Slice Theorem relates the 2D-Fourier transform of $u$ to the 1D-Fourier transform of $f$:</p>
-$$\widehat{f}(\sigma,\theta) = \widehat{u}(\sigma \mathbf{n}_\theta),$$<p>with</p>
-$$\widehat{f}(\sigma,\theta) = \int_{\mathbb{R}} f(s,\theta) e^{-2\pi\imath \sigma s}\mathrm{d}s,$$$$\widehat{u}(\mathbf{k}) = \int_{\mathbb{R}^2} u(\mathbf{x}) e^{-2\pi\imath \mathbf{k}\cdot \mathbf{x}}\mathrm{d}\mathbf{x},$$$$\mathbf{n}_\theta = (\cos\theta,\sin\theta).$$
+$$\widehat{f}(\theta, \sigma) = \widehat{u}(\sigma \mathbf{n}_\theta),$$<p>with</p>
+$$\widehat{f}(\theta,\sigma) = \int_{\mathbb{R}} f(\theta,s) e^{-2\pi\imath \sigma s}\mathrm{d}s,$$$$\widehat{u}(\mathbf{k}) = \int_{\mathbb{R}^2} u(\mathbf{x}) e^{-2\pi\imath \mathbf{k}\cdot \mathbf{x}}\mathrm{d}\mathbf{x},$$$$\mathbf{n}_\theta = (\cos\theta,-\sin\theta).$$
 </div>
 </div></section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
@@ -14470,7 +14470,7 @@ $$\widehat{f}(\sigma,\theta) = \int_{\mathbb{R}} f(s,\theta) e^{-2\pi\imath \sig
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
 <li>In principle, we can reconstruct the image by performing an inverse Fourier transform</li>
-<li>Having collected <em>discrete</em> measurements $f_{ij} = f(s_i,\theta_j)$, we only have partial information on the Fourier transform of $u$</li>
+<li>Having collected <em>discrete</em> measurements $f_{ij} = f(\theta_j,s_i)$, we only have partial information on the Fourier transform of $u$</li>
 <li>Ultimately, we will represent $u$ on a grid of pixels with intenties $u_i = u(\mathbf{x}_i)$</li>
 </ul>
 
