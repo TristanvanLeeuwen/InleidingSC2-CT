@@ -14431,8 +14431,8 @@ div.jp-InputArea {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>The Radon transform is defined as</p>
-$$f(s,\theta) = \int_{-\infty}^\infty u\left(x(s,t), y(s,t)\right) \mathrm{d}t,$$<p>with</p>
-$$x(s,t) = s \cos \theta + t \sin \theta, \quad y(s,t) = s \sin \theta - t\cos\theta.$$
+$$f(\theta,s) = \int_{-\infty}^\infty u\left(x(s,t), y(s,t)\right) \mathrm{d}t,$$<p>with</p>
+$$x(s,t) = t \sin \theta + s \cos \theta, \quad y(s,t) = t\cos\theta - s \sin \theta.$$
 </div>
 </div></section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
@@ -14461,7 +14461,7 @@ $$\mathbf{f} = A\mathbf{u}.$$
 <h2 id="The-line-model">The line model<a class="anchor-link" href="#The-line-model">&#182;</a></h2><ul>
 <li>The weights $a_{ij}$ represent the length of the intersection between the $j-th$ ray and the $i-th$ pixel.</li>
 <li>We can compute these efficiently by solving for $t$ from
-$$x = s \cos \theta + t \sin \theta, \quad y = s \sin \theta - t\cos\theta,$$
+$$x = t \sin \theta + s \cos \theta, \quad y = t\cos\theta - s \sin \theta,$$
 where $s$ is given and $x,y$ are the grid lines.</li>
 <li>This yields an array of intersection points $\{t_k\}_k$ along the ray and $t_{k} - t_{k-1}$ gives the intersection length</li>
 <li>Substituting $(t_{k} + t_{k-1})/2$ back in the line equation and rounding yields the central coordinates of the intersected pixels</li>
