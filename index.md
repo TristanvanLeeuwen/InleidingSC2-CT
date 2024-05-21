@@ -14,7 +14,7 @@ In addition, we pay attention to writing readable and error-free code, version c
 
 The assignments you make every week are processed in pairs into a report of **maximum 10 pages** (including references, excluding code). In addition to the report, you also submit the code (as github link or .zip file).
 
-The **deadline** for the report is **Friday June 30th 2023**. Mail your report to [Tristan van Leeuwen](mailto:t.vanleeuwen@uu.nl)
+The **deadline** for the report is **Friday June 28th 2024**. Mail your report to [Tristan van Leeuwen](mailto:t.vanleeuwen@uu.nl)
 
 # Useful resources
 
