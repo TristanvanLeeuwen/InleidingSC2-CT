@@ -34,7 +34,7 @@ In these lectures we learn the basics of Computed Tomography; the underlying phy
 * [What is computed tomography?](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture1.html)
 * [Fourier reconstruction](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture2.html)
 
-## Assignments (Practical sessions on May 21st 15:15 - 17:00 and May 23rd 09:00 - 12:45):
+## Assignments (Practical sessions on May 21st 15:15 - 17:00 and May 23rd 11:00 - 12:45):
 
 In these assignments you will investigate the accuracy of the Python method `radon` and compare different Fourier reconstruction methods for accuracy. After these assignments you will know:
 
@@ -50,7 +50,7 @@ This week we are going to discretize the Radon transformation and compare differ
 * [Discretization of the Radon transformation](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture3.html#/)
 * [Filtered backprojection](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture4.html#/)
 
-## Assignments (Practical sessions on MAy 28th 13:15 - 15:00 and May 30th 09:00 - 12:45):
+## Assignments (Practical sessions on May 28th 13:15 - 15:00 and May 30th 11:00 - 12:45):
 
 In this week's assignments you will investigate which discretization of the Radon transformation is most efficient and how to efficiently implement the FBP algorithm. After these assignments you will know:
 
@@ -66,7 +66,7 @@ This week we look at another class of reconstruction methods; the algebraic meth
 * [Algebraic reconstruction methods](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture5.html#/)
 * [Tomography in practice](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture6.html#/)
 
-## Assignments (Practical sessions on June 4th 13:15 - 15:00 and June 6th 09:00 - 12:45):
+## Assignments (Practical sessions on June 4th 13:15 - 15:00 and June 6th 11:00 - 12:45):
 
 In the assignments we compare different algebraic reconstruction methods and design an efficient and robust algorithm. In addition, we apply this to a real dataset. After these assignments you will know:
 
