@@ -12,7 +12,38 @@ We learn about:
 
 In addition, we pay attention to writing readable and error-free code, version control, comparing different numerical methods and reproducible numerical experiments.
 
-The assignments you make every week are processed in pairs into a report of **maximum 10 pages** (including references, excluding code). In addition to the report, you also submit the code (as github link or .zip file).
+# Final report
+The assignments you make every week are processed in pairs into a report of approximately 10 pages (including references, excluding code). In addition to the report, you also submit the code (as github link or .zip file).
+
+* You don't have to include all the assignments, but you can instead focus on the ones that you found most interesting / instructive. A good way to start is to formulate a research question based on the assignments (e.g., comparing 2 image reconstruction methods and asking which one is more accurate or efficient)
+* Make it a coherent story, (introduction, theory, implementation, results, conclusion and discussion) rather than a chronological overview of the assignments. 
+* Discuss the numerical implementation; if you used the example code for the results, state this clearly and explain briefly your efforts in implementing (and why they did not work). 
+* If you used your own implementation of the algorithms, briefly explain your approach and motivate the choices you made in the implementation. 
+* For numerical experiments, clearly state the parameters used, and carefully discuss the conclusions that can be drawn from them. 
+* Make sure figures include labels and captions and are referred to in the text
+
+The grade will be based on 3 aspects:
+
+**Content (40%)**
+
+* Is the research questions clearly defined
+* Is the structure clear and is the report complete (introduction, methods, results, conclusion/discussion)
+* Is the explanation of the theory correct
+* Are the algorithms and their implementations discussed in sufficient detail
+
+**Results (40%)**
+
+* are the numerical experiments clearly described
+* do the numerical experiments aid in answering the research question
+* are the numerical experiments more than an example, in the sense that they go beyond showing a method works on one particular example
+* do the results support the conclusions and are the limitations discussed
+
+**Layout (20%)**
+
+* do all figures have legends, labels, captions and are they referred to in the text
+* are style, spelliing and grammar reasonable
+
+If you have any questions, or would you like to have some feedback on an initial draft you can reach me by mail.
 
 The **deadline** for the report is **Friday June 28th 2024**. Mail your report to [Tristan van Leeuwen](mailto:t.vanleeuwen@uu.nl)
 
