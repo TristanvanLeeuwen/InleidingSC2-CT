@@ -14440,10 +14440,10 @@ $$x(s,t) = t \sin \theta + s \cos \theta, \quad y(s,t) = t\cos\theta - s \sin \t
 <ul>
 <li>Let $s \in [-1,1]$ and discretise the detector in $n_d$ cells with width $2/n_d$.</li>
 <li>Let $(x,y) \in [-1,1]^2$ and discretise the image in $n_x \times n_y$ pixels with size $2/n_x \times 2/n_y$.</li>
+<li>Define basis functions $\phi_j(x,y)$ that are supported on the $j-th$ pixel.</li>
 <li>The contribution of the $j-th$ pixel to the $i-th$ detector element at angle $\theta$ is then given by </li>
 </ul>
-$$a_{ij}(\theta) = \int_{-\infty}^\infty \phi_j\left(x(s_i,t), y(s_i,t)\right) \mathrm{d}t,$$<p>with $\phi_j(x,y)$ is supported on the $j-th$ pixel.</p>
-<ul>
+$$a_{ij}(\theta) = \int_{-\infty}^\infty \phi_j\left(x(s_i,t), y(s_i,t)\right) \mathrm{d}t,$$<ul>
 <li>The measurement along a single angle then leads to a matrix $A(\theta) \in \mathbb{R}^{n_d \times n_x \dot n_y}$</li>
 </ul>
 
