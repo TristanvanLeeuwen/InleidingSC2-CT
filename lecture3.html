@@ -14444,7 +14444,7 @@ $$x(s,t) = t \sin \theta + s \cos \theta, \quad y(s,t) = t\cos\theta - s \sin \t
 <li>The contribution of the $j-th$ pixel to the $i-th$ detector element at angle $\theta$ is then given by </li>
 </ul>
 $$a_{ij}(\theta) = \int_{-\infty}^\infty \phi_j\left(x(s_i,t), y(s_i,t)\right) \mathrm{d}t,$$<ul>
-<li>The measurement along a single angle then leads to a matrix $A(\theta) \in \mathbb{R}^{n_d \times n_x \dot n_y}$</li>
+<li>The measurement along a single angle then leads to a matrix $A(\theta) \in \mathbb{R}^{n_d \times n_x \cdot n_y}$</li>
 </ul>
 
 </div>
@@ -14487,7 +14487,7 @@ where $s$ is given and $x,y$ are the grid lines.</li>
 
 <span class="n">tx</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">si</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
 <span class="n">ty</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">si</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">tx</span><span class="p">,</span><span class="n">ty</span><span class="p">)))</span>
+<span class="n">t</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">tx</span><span class="p">,</span><span class="n">ty</span><span class="p">)))</span>
 
 <span class="n">xi</span> <span class="o">=</span> <span class="n">si</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">t</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
 <span class="n">yi</span> <span class="o">=</span> <span class="n">si</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">-</span> <span class="n">t</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
@@ -14532,13 +14532,13 @@ where $s$ is given and $x,y$ are the grid lines.</li>
 </ul>
 
 </div>
-</div>
+</div></section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="COO">COO<a class="anchor-link" href="#COO">&#182;</a></h3><p><img src="https://matteding.github.io/images/coo.gif" alt=""></p>
 
 </div>
-</div>
+</div></section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="CSC">CSC<a class="anchor-link" href="#CSC">&#182;</a></h3><p><img src="https://matteding.github.io/images/csc.gif" alt=""></p>
