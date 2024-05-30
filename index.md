@@ -74,7 +74,7 @@ In these assignments you will investigate the accuracy of the Python method `rad
 
 # Week 2
 
-## Lectures (Lecture on May 28th 15:15 - 17:00):
+## Lectures (Lecture on May 28th 13:15 - 15:00):
 
 This week we are going to discretize the Radon transformation and compare different approaches in efficiency and accuracy. In addition, we are looking at an alternative reconstruction method; Filtered Back Projection (FBP).
 
@@ -90,7 +90,7 @@ In this week's assignments you will investigate which discretization of the Rado
 
 # Week 3
 
-## Lectures (Lecture on June 4th 15:15 - 17:00):
+## Lectures (Lecture on June 4th 13:15 - 15:00):
 
 This week we look at another class of reconstruction methods; the algebraic methods. Practical matters are also discussed and we get to work with a real dataset.
 
