@@ -13,10 +13,9 @@ We learn about:
 In addition, we pay attention to writing readable and error-free code, version control, comparing different numerical methods and reproducible numerical experiments.
 
 # Final report
-The assignments you make every week are processed in pairs into a report of approximately 10 pages (including references, excluding code). In addition to the report, you also submit the code (as github link or .zip file).
+The assignments you make every week are processed in pairs into a report of max. 20 pages (including references and figures). In addition to the report, you also submit the code (as github link or .zip file).
 
-* You don't have to include all the assignments, but you can instead focus on the ones that you found most interesting / instructive. A good way to start is to formulate a research question based on the assignments (e.g., comparing 2 image reconstruction methods and asking which one is more accurate or efficient)
-* Make it a coherent story, (introduction, theory, implementation, results, conclusion and discussion) rather than a chronological overview of the assignments. 
+* You combine all the assignments ([lecture 1](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture1.html#/6), [lecture 2](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture2.html#/5), [lecture 3](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture3.html#/5), [lecture 4](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture4.html#/4), [lecture 5](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture5.html#/5)) in to one report.
 * Discuss the numerical implementation; if you used the example code for the results, state this clearly and explain briefly your efforts in implementing (and why they did not work). 
 * If you used your own implementation of the algorithms, briefly explain your approach and motivate the choices you made in the implementation. 
 * For numerical experiments, clearly state the parameters used, and carefully discuss the conclusions that can be drawn from them. 
@@ -26,26 +25,22 @@ The grade will be based on 3 aspects:
 
 **Content (40%)**
 
-* Is the research questions clearly defined
-* Is the structure clear and is the report complete (introduction, methods, results, conclusion/discussion)
-* Is the explanation of the theory correct
+* Are the answers to the assignments correct
 * Are the algorithms and their implementations discussed in sufficient detail
 
 **Results (40%)**
 
-* are the numerical experiments clearly described
-* do the numerical experiments aid in answering the research question
-* are the numerical experiments more than an example, in the sense that they go beyond showing a method works on one particular example
-* do the results support the conclusions and are the limitations discussed
+* Are the numerical experiments discussed in detail
+* Are the their results interpreted correctly
 
 **Layout (20%)**
 
 * do all figures have legends, labels, captions and are they referred to in the text
-* are style, spelliing and grammar reasonable
+* are style, spelling and grammar reasonable
 
 If you have any questions, or would you like to have some feedback on an initial draft you can reach me by mail.
 
-The **deadline** for the report is **Friday June 28th 2024**. Mail your report to [Tristan van Leeuwen](mailto:t.vanleeuwen@uu.nl)
+The **deadline** for the report is **Friday June 20th 2025**. Mail your report to [Tristan van Leeuwen](mailto:t.vanleeuwen@uu.nl)
 
 # Useful resources
 
@@ -58,14 +53,14 @@ The **deadline** for the report is **Friday June 28th 2024**. Mail your report t
 
 # Week 1 
 
-## Lectures (Lectures on May 21st 13:15 - 15:00):
+## Lectures (Lecture on May 26th 13:15 - 15:00):
 
 In these lectures we learn the basics of Computed Tomography; the underlying physics and the Fourier Slice Theorem, which forms the basis for tomographic image reconstruction.
 
 * [What is computed tomography?](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture1.html)
 * [Fourier reconstruction](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture2.html)
 
-## Assignments (Practical sessions on May 21st 15:15 - 17:00 and May 23rd 11:00 - 12:45):
+## Assignments (Practical sessions on May 26th 15:15 - 17:00):
 
 In these assignments you will investigate the accuracy of the Python method `radon` and compare different Fourier reconstruction methods for accuracy. After these assignments you will know:
 
@@ -74,14 +69,14 @@ In these assignments you will investigate the accuracy of the Python method `rad
 
 # Week 2
 
-## Lectures (Lecture on May 28th 13:15 - 15:00):
+## Lectures (Lectures on June 2nd 13:15 - 15:00 and June 5th 09:00 - 10:45):
 
 This week we are going to discretize the Radon transformation and compare different approaches in efficiency and accuracy. In addition, we are looking at an alternative reconstruction method; Filtered Back Projection (FBP).
 
 * [Discretization of the Radon transformation](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture3.html#/)
 * [Filtered backprojection](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture4.html#/)
 
-## Assignments (Practical sessions on May 28th 13:15 - 15:00 and May 30th 11:00 - 12:45):
+## Assignments (Practical sessions on June 2nd 15:15 - 17:00 and June 5th 11:00 - 12:45):
 
 In this week's assignments you will investigate which discretization of the Radon transformation is most efficient and how to efficiently implement the FBP algorithm. After these assignments you will know:
 
@@ -90,16 +85,26 @@ In this week's assignments you will investigate which discretization of the Rado
 
 # Week 3
 
-## Lectures (Lecture on June 4th 13:15 - 15:00):
+## Lectures (Lecture on June 12th 09:00 - 10:45):
 
 This week we look at another class of reconstruction methods; the algebraic methods. Practical matters are also discussed and we get to work with a real dataset.
 
 * [Algebraic reconstruction methods](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture5.html#/)
 * [Tomography in practice](https://tristanvanleeuwen.github.io/InleidingSC2-CT/lecture6.html#/)
 
-## Assignments (Practical sessions on June 4th 13:15 - 15:00 and June 6th 11:00 - 12:45):
+## Assignments (Practical sessions on June 12th 11:00 - 12:45):
 
 In the assignments we compare different algebraic reconstruction methods and design an efficient and robust algorithm. In addition, we apply this to a real dataset. After these assignments you will know:
 
 * how to efficiently implement various iterative methods for tomographic reconstruction
 * how to apply the developed methods to a real tomographic dataset
+
+# Week 4
+
+## Lectures (Lecture on June 16th 13:15 - 15:00)
+
+* No new material will be covered, but there will be time for questions
+  
+## Assignments (Practical sessions on June 16th 15:15 - 17:00 and June 19th 11:00 - 12:45):
+
+* Time to work on your project report and ask questions
