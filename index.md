@@ -40,7 +40,7 @@ The grade will be based on 3 aspects:
 
 If you have any questions, or would you like to have some feedback on an initial draft you can reach me by mail.
 
-The **deadline** for the report is **Friday June 20th 2025**. Mail your report to [Tristan van Leeuwen](mailto:t.vanleeuwen@uu.nl)
+The **deadline** for the report is **Friday June 27th 2025**. Mail your report to [Tristan van Leeuwen](mailto:t.vanleeuwen@uu.nl)
 
 # Useful resources
 
